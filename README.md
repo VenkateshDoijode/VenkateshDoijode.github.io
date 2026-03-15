@@ -59,54 +59,6 @@
 
 ---
 
-## 📁 Repository Structure
-
-```
-VenkateshDoijode.github.io/
-│
-└── index.html          # Main portfolio page (single-file, no dependencies)
-└── README.md           # This file
-```
-
----
-
-## 🚀 Deployment
-
-This site is deployed automatically via **GitHub Pages**.
-
-### How it works
-
-1. Any push to the `main` branch triggers an automatic deployment
-2. GitHub Pages serves `index.html` from the root of the repository
-3. The site is live within **1–2 minutes** of each push
-
-### Run locally
-
-No build tools or dependencies needed. Just open the file in a browser:
-
-```bash
-# Clone the repo
-git clone https://github.com/VenkateshDoijode/VenkateshDoijode.github.io.git
-
-# Open in browser (macOS)
-open index.html
-
-# Open in browser (Linux)
-xdg-open index.html
-
-# Open in browser (Windows)
-start index.html
-```
-
-Or serve it with Python for a local dev server:
-
-```bash
-python -m http.server 8000
-# Then visit: http://localhost:8000
-```
-
----
-
 ## 💼 Experience Highlights
 
 ### Lead SDET — Automation Architect | Wipro × BNY *(Jun 2021 – Present)*

@@ -622,13 +622,13 @@ footer{
 
 <!-- TYPED.JS -->
 <script>
-var typed = new Typed('.typing', {
-  strings: ["SDET", "Fast Learner","AI-Augmented Quality", "Automation Architect"],
+ var typed = new Typed('.typing', {
+  strings: ["SDET", "Fast Learner", "AI-Augmented Quality", "Automation Architect"],
   loop: true,
-  typeSpeed: 80,
-  backSpeed: 40,
-  backDelay: 1800,
-  startDelay: 400,
+  typeSpeed: 40,   // Decreased from 80 (Faster typing)
+  backSpeed: 20,   // Decreased from 40 (Faster erasing)
+  backDelay: 1000,  // Decreased from 1800 (Shorter pause at the end)
+  startDelay: 200,  // Decreased from 400 (Faster initial start)
 });
 </script>
 

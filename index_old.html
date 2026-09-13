@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Venkateshwara Doijode - AI Automation Architect</title>
+ <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🤖</text></svg>"> 
+<meta name="description" content="Senior SDET and Automation Architect with 9 years of experience in Selenium, REST Assured, CI/CD, AI-Augmented Quality Engineering.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">  
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=JetBrains+Mono:wght@300;400;500;700&display=swap" rel="stylesheet">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/2.0.12/typed.min.js"></script>
+<style>
+/* ─── THEME VARIABLES ─── */
+:root { --transition: 0.35s cubic-bezier(0.4,0,0.2,1); }
+
+[data-theme="dark"] {
+  --bg:#06070d; --bg2:#0d0f1a; --bg3:#131627; --bg4:#1a1e35;
+  --border:rgba(99,120,255,0.12); --border2:rgba(99,120,255,0.25);
+  --text:#e8eaf6; --text2:#a0a8cc; --muted:#5a6080;
+  --accent:#6378ff; --accent2:#00e5ff; --accent3:#b06dff;
+  --glow:rgba(99,120,255,0.2); --glow2:rgba(0,229,255,0.12);
+  --card-bg:rgba(13,15,26,0.88); --nav-bg:rgba(6,7,13,0.90);
+  --hero-grad:radial-gradient(ellipse 80% 60% at 65% 0%,rgba(99,120,255,0.13) 0%,transparent 70%),
+              radial-gradient(ellipse 50% 50% at 5% 85%,rgba(176,109,255,0.09) 0%,transparent 60%);
+  --shadow-card:0 8px 40px rgba(0,0,0,0.5),0 1px 0 rgba(99,120,255,0.14) inset;
+  --shadow-btn:0 0 30px rgba(99,120,255,0.38);
+  --particle-color:99,120,255;
+}
+
+[data-theme="light"] {
+  --bg:#ffffff; --bg2:#f5f6ff; --bg3:#eceeff; --bg4:#e0e4ff;
+  --border:rgba(66,85,232,0.14); --border2:rgba(66,85,232,0.28);
+  --text:#0d1033; --text2:#3d4270; --muted:#8890b8;
+  --accent:#4255e8; --accent2:#0099bb; --accent3:#8040e0;
+  --glow:rgba(66,85,232,0.13); --glow2:rgba(0,153,187,0.09);
+  --card-bg:rgba(255,255,255,0.94); --nav-bg:rgba(255,255,255,0.94);
+  --hero-grad:radial-gradient(ellipse 80% 60% at 65% 0%,rgba(99,120,255,0.07) 0%,transparent 70%),
+              radial-gradient(ellipse 50% 50% at 5% 85%,rgba(176,109,255,0.05) 0%,transparent 60%);
+  --shadow-card:0 4px 32px rgba(66,85,232,0.10),0 1px 0 rgba(99,120,255,0.10) inset;
+  --shadow-btn:0 0 24px rgba(66,85,232,0.26);
+  --particle-color:66,85,232;
+}
+
+/* ─── RESET ─── */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);color:var(--text);
+  font-family:'Syne',sans-serif;line-height:1.7;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  transition:background var(--transition),color var(--transition);
+}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* ─── BG CANVAS ─── */
+#bg-canvas{position:fixed;inset:0;z-index:0;pointer-events:none;opacity:0.5;transition:opacity var(--transition)}
+[data-theme="light"] #bg-canvas{opacity:0.22}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:0 6vw;height:64px;
+  background:var(--nav-bg);
+  backdrop-filter:blur(20px) saturate(180%);
+  border-bottom:1px solid var(--border);
+  transition:background var(--transition),border-color var(--transition);
+}
+.nav-logo{
+  font-family:'JetBrains Mono',monospace;font-size:13px;font-weight:700;
+  color:var(--accent);letter-spacing:0.04em;
+  display:flex;align-items:center;gap:9px;
+}
+.nav-dot{
+  width:7px;height:7px;border-radius:50%;background:var(--accent2);
+  box-shadow:0 0 8px var(--accent2);
+  animation:blink 2s ease-in-out infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0.15}}
+
+.nav-right{display:flex;align-items:center;gap:24px}
+.nav-links{display:flex;gap:22px;list-style:none}
+.nav-links a{
+  font-size:11px;font-weight:600;color:var(--text2);
+  letter-spacing:0.08em;text-transform:uppercase;transition:color 0.2s;
+}
+.nav-links a:hover{color:var(--text);text-decoration:none}
+
+/* THEME TOGGLE */
+.theme-toggle{
+  width:52px;height:28px;background:var(--bg3);
+  border:1px solid var(--border2);border-radius:100px;
+  cursor:pointer;position:relative;flex-shrink:0;
+  transition:background var(--transition),border-color var(--transition);
+}
+.toggle-thumb{
+  position:absolute;top:3px;left:3px;width:20px;height:20px;
+  border-radius:50%;background:var(--accent);
+  box-shadow:0 2px 8px var(--glow);
+  transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1),background 0.3s;
+  display:flex;align-items:center;justify-content:center;font-size:11px;
+}
+[data-theme="light"] .toggle-thumb{transform:translateX(24px)}
+
+/* ─── HERO ─── */
+#hero{
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+  padding:90px 6vw 80px;position:relative;overflow:hidden;z-index:2;
+}
+.hero-bg-grad{position:absolute;inset:0;z-index:0;background:var(--hero-grad);pointer-events:none}
+.hero-grid{
+  position:absolute;inset:0;z-index:0;
+  background-image:linear-gradient(var(--border) 1px,transparent 1px),
+                    linear-gradient(90deg,var(--border) 1px,transparent 1px);
+  background-size:72px 72px;
+  mask-image:radial-gradient(ellipse 90% 90% at 50% 50%,black 30%,transparent 100%);
+  pointer-events:none;
+}
+.hero-content{position:relative;z-index:1;max-width:900px}
+
+.hero-badge{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;
+  color:var(--accent2);letter-spacing:0.08em;
+  border:1px solid rgba(0,229,255,0.22);border-radius:100px;
+  padding:5px 18px 5px 10px;margin-bottom:36px;
+  background:rgba(0,229,255,0.04);backdrop-filter:blur(10px);
+}
+.badge-dot{
+  width:6px;height:6px;border-radius:50%;background:var(--accent2);
+  box-shadow:0 0 10px var(--accent2);
+  animation:pulse 2s ease-in-out infinite;
+}
+@keyframes pulse{0%,100%{transform:scale(1);opacity:1}50%{transform:scale(0.55);opacity:0.35}}
+
+.hero-name{
+/*   font-size:clamp(42px,7.5vw,88px);  */
+  font-size: clamp(28px, 5vw, 56px);
+  font-weight:800;
+  line-height:1.0;letter-spacing:-0.03em;margin-bottom:18px;
+  background:linear-gradient(140deg,var(--text) 0%,var(--text2) 100%);
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+}
+
+.hero-typed-wrap{
+  font-family:'JetBrains Mono',monospace;
+  font-size:clamp(15px,2.2vw,22px);font-weight:400;
+  margin-bottom:32px;min-height:34px;
+  display:flex;align-items:center;gap:10px;
+}
+.typed-prefix{color:var(--muted);font-size:0.82em}
+.typing{color:var(--accent2)}
+
+.hero-desc{
+  font-size:clamp(14px,1.7vw,17px);font-weight:400;
+  color:var(--text2);max-width:550px;margin-bottom:48px;line-height:1.85;
+}
+
+.hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-bottom:80px}
+
+.btn{
+  display:inline-flex;align-items:center;gap:9px;
+  padding:13px 26px;border-radius:8px;
+  font-family:'Syne',sans-serif;font-size:14px;font-weight:600;
+  cursor:pointer;transition:all 0.25s;letter-spacing:0.02em;
+  position:relative;overflow:hidden;text-decoration:none!important;
+}
+.btn::after{content:'';position:absolute;inset:0;opacity:0;background:rgba(255,255,255,0.08);transition:opacity 0.2s}
+.btn:hover::after{opacity:1}
+
+.btn-primary{background:var(--accent);color:#fff;border:none;box-shadow:0 4px 20px var(--glow)}
+.btn-primary:hover{transform:translateY(-2px);box-shadow:var(--shadow-btn)}
+.btn-glass{background:var(--bg3);color:var(--text);border:1px solid var(--border2)}
+.btn-glass:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px)}
+.btn-dl{
+  background:linear-gradient(135deg,var(--accent3),var(--accent));
+  color:#fff;border:none;box-shadow:0 4px 20px rgba(176,109,255,0.28);
+}
+.btn-dl:hover{transform:translateY(-2px);box-shadow:0 8px 32px rgba(176,109,255,0.42)}
+
+.hero-stats{
+  display:flex;gap:0;border:1px solid var(--border);
+  border-radius:16px;overflow:hidden;backdrop-filter:blur(14px);
+  background:var(--card-bg);width:fit-content;box-shadow:var(--shadow-card);
+}
+.stat-item{padding:24px 36px;border-right:1px solid var(--border);transition:background 0.2s}
+.stat-item:last-child{border-right:none}
+.stat-item:hover{background:var(--bg3)}
+.stat-num{
+  font-family:'JetBrains Mono',monospace;font-size:32px;font-weight:700;
+  color:var(--accent);line-height:1;filter:drop-shadow(0 0 16px var(--glow));
+}
+.stat-label{font-size:11px;color:var(--muted);margin-top:5px;letter-spacing:0.05em}
+
+/* Floating orbs */
+.orb{position:absolute;border-radius:50%;filter:blur(80px);pointer-events:none;z-index:0}
+.orb-1{width:500px;height:500px;top:-150px;right:-80px;background:radial-gradient(circle,rgba(99,120,255,0.15),transparent 70%);animation:float 8s ease-in-out infinite}
+.orb-2{width:360px;height:360px;bottom:-20px;left:-70px;background:radial-gradient(circle,rgba(176,109,255,0.1),transparent 70%);animation:float 10s ease-in-out infinite;animation-delay:3s}
+.orb-3{width:280px;height:280px;top:38%;right:12%;background:radial-gradient(circle,rgba(0,229,255,0.09),transparent 70%);animation:float 7s ease-in-out infinite;animation-delay:5s}
+@keyframes float{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-28px) scale(1.04)}}
+
+/* ─── SECTIONS ─── */
+section{padding:110px 6vw;border-top:1px solid var(--border);position:relative;z-index:2;transition:border-color var(--transition)}
+.section-label{
+  font-family:'JetBrains Mono',monospace;font-size:11px;font-weight:500;
+  color:var(--accent2);letter-spacing:0.14em;text-transform:uppercase;margin-bottom:14px;
+}
+.section-title{
+  font-size:clamp(26px,4.5vw,48px);font-weight:800;
+  line-height:1.1;letter-spacing:-0.02em;margin-bottom:56px;
+}
+.section-title em{font-style:normal;color:var(--accent)}
+
+/* ─── ABOUT ─── */
+.about-grid{display:grid;grid-template-columns:1.2fr 0.8fr;gap:72px;align-items:start}
+.about-text p{color:var(--text2);margin-bottom:22px;font-size:16px;line-height:1.85}
+.about-sidebar{display:flex;flex-direction:column;gap:14px}
+.info-card{
+  background:var(--card-bg);border:1px solid var(--border);border-radius:14px;
+  padding:20px 24px;box-shadow:var(--shadow-card);
+  transition:background var(--transition),border-color var(--transition),transform 0.2s;
+}
+.info-card:hover{transform:translateY(-3px);border-color:var(--border2)}
+.info-card-label{font-size:10px;font-family:'JetBrains Mono',monospace;color:var(--muted);letter-spacing:0.1em;margin-bottom:8px;text-transform:uppercase}
+.info-card-value{font-size:14px;color:var(--text);font-weight:500;line-height:1.6}
+.cert-list{display:flex;flex-direction:column;gap:0}
+.cert-item{
+  font-size:13px;color:var(--text2);padding:7px 0;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;gap:8px;
+}
+.cert-item::before{content:'▸';color:var(--accent);font-size:10px}
+.cert-item:last-child{border-bottom:none}
+
+/* ─── SKILLS ─── */
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:16px}
+.skill-card{
+  background:var(--card-bg);border:1px solid var(--border);border-radius:14px;
+  padding:24px 26px;box-shadow:var(--shadow-card);
+  transition:background var(--transition),border-color var(--transition),transform 0.25s,box-shadow 0.25s;
+  position:relative;overflow:hidden;
+}
+.skill-card::before{
+  content:'';position:absolute;top:0;left:0;right:0;height:2px;
+  background:linear-gradient(90deg,var(--accent),var(--accent2));
+  transform:scaleX(0);transform-origin:left;
+  transition:transform 0.4s cubic-bezier(0.4,0,0.2,1);
+}
+.skill-card:hover{transform:translateY(-5px);border-color:var(--border2);box-shadow:0 16px 48px rgba(99,120,255,0.15)}
+.skill-card:hover::before{transform:scaleX(1)}
+.skill-head{display:flex;align-items:center;gap:12px;margin-bottom:16px}
+.skill-icon{
+  width:40px;height:40px;border-radius:10px;
+  background:var(--bg3);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-size:18px;flex-shrink:0;
+}
+.skill-name{font-weight:700;font-size:14px}
+.skill-tags{display:flex;flex-wrap:wrap;gap:6px}
+.tag{
+  font-family:'JetBrains Mono',monospace;font-size:10px;font-weight:500;
+  color:var(--text2);background:var(--bg3);border:1px solid var(--border);
+  border-radius:5px;padding:3px 9px;letter-spacing:0.04em;
+  transition:background 0.2s,border-color 0.2s,color 0.2s;cursor:default;
+}
+.tag:hover{background:var(--accent);border-color:var(--accent);color:#fff}
+
+/* ─── EXPERIENCE ─── */
+.experience-list{display:flex;flex-direction:column;gap:0}
+.exp-item{
+  display:grid;grid-template-columns:210px 1fr;gap:52px;
+  padding:44px 0;border-bottom:1px solid var(--border);position:relative;
+}
+.exp-item:last-child{border-bottom:none}
+.exp-item::before{content:'';position:absolute;left:208px;top:0;bottom:0;width:1px;background:var(--border)}
+.exp-period{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--muted);letter-spacing:0.08em;margin-bottom:8px}
+.exp-company{font-size:16px;font-weight:800;color:var(--text);margin-bottom:2px}
+.exp-client{font-size:12px;color:var(--accent2);font-family:'JetBrains Mono',monospace}
+.exp-role{font-size:15px;font-weight:700;color:var(--accent);margin-bottom:20px}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:10px}
+.exp-bullets li{font-size:14px;color:var(--text2);line-height:1.72;padding-left:18px;position:relative}
+.exp-bullets li::before{content:'▸';position:absolute;left:0;color:var(--accent);font-size:10px;top:5px}
+.exp-bullets li strong{color:var(--text);font-weight:600}
+
+/* ─── ACHIEVEMENTS ─── */
+.achievements-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.ach-card{
+  background:var(--card-bg);border:1px solid var(--border);border-radius:16px;
+  padding:32px 26px;box-shadow:var(--shadow-card);
+  transition:background var(--transition),border-color var(--transition),transform 0.25s;
+  position:relative;overflow:hidden;
+}
+.ach-card::after{
+  content:'';position:absolute;bottom:-30px;right:-30px;
+  width:110px;height:110px;border-radius:50%;
+  background:radial-gradient(circle,var(--glow),transparent 70%);pointer-events:none;
+}
+.ach-card:hover{transform:translateY(-6px);border-color:var(--accent)}
+.ach-num{
+  font-family:'JetBrains Mono',monospace;font-size:46px;font-weight:700;
+  background:linear-gradient(135deg,var(--accent),var(--accent2));
+  -webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;
+  line-height:1;margin-bottom:14px;
+  filter:drop-shadow(0 0 18px var(--glow));
+}
+.ach-text{font-size:13px;color:var(--text2);line-height:1.65}
+
+/* ─── CONTRIBUTIONS ─── */
+.contrib-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.contrib-card{
+  background:var(--card-bg);border:1px solid var(--border);border-radius:16px;
+  padding:28px;box-shadow:var(--shadow-card);
+  transition:background var(--transition),border-color var(--transition),transform 0.25s;
+}
+.contrib-card:hover{transform:translateY(-5px);border-color:var(--border2)}
+.contrib-icon-wrap{
+  width:48px;height:48px;border-radius:12px;
+  background:var(--bg3);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;font-size:22px;
+  margin-bottom:18px;transition:background 0.2s,border-color 0.2s;
+}
+.contrib-card:hover .contrib-icon-wrap{background:var(--accent);border-color:var(--accent)}
+.contrib-title{font-size:15px;font-weight:700;margin-bottom:10px}
+.contrib-desc{font-size:13px;color:var(--text2);line-height:1.65}
+
+/* ─── CONTACT ─── */
+#contact{text-align:center}
+.contact-inner{max-width:640px;margin:0 auto}
+.contact-desc{font-size:16px;color:var(--text2);margin-bottom:48px;line-height:1.8}
+.contact-links{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;text-align:left}
+.contact-link{
+  display:flex;align-items:center;gap:16px;
+  background:var(--card-bg);border:1px solid var(--border);border-radius:14px;
+  padding:18px 22px;color:var(--text);
+  transition:background var(--transition),border-color var(--transition),transform 0.2s;
+}
+.contact-link:hover{border-color:var(--accent);transform:translateY(-3px);text-decoration:none}
+.c-icon{
+  width:40px;height:40px;border-radius:10px;
+  background:var(--bg3);border:1px solid var(--border);
+  display:flex;align-items:center;justify-content:center;
+  font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:700;
+  color:var(--accent);flex-shrink:0;transition:background 0.2s,color 0.2s;
+}
+.contact-link:hover .c-icon{background:var(--accent);color:#fff;border-color:var(--accent)}
+.c-label{font-size:11px;color:var(--muted);margin-top:2px;letter-spacing:0.04em}
+.c-val{font-size:14px;font-weight:500}
+
+/* ─── FOOTER ─── */
+footer{
+  padding:28px 6vw;border-top:1px solid var(--border);
+  display:flex;justify-content:space-between;align-items:center;
+  z-index:2;position:relative;transition:border-color var(--transition);
+}
+.footer-copy{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--muted);letter-spacing:0.06em}
+
+/* ─── REVEAL ─── */
+.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.72s cubic-bezier(0.4,0,0.2,1),transform 0.72s cubic-bezier(0.4,0,0.2,1)}
+.reveal.visible{opacity:1;transform:translateY(0)}
+
+/* ─── RESPONSIVE ─── */
+@media(max-width:900px){
+  .about-grid{grid-template-columns:1fr}
+  .achievements-grid{grid-template-columns:repeat(2,1fr)}
+  .contrib-grid{grid-template-columns:repeat(2,1fr)}
+  .exp-item{grid-template-columns:1fr;gap:14px}
+  .exp-item::before{display:none}
+  .hero-stats{width:100%}
+  .stat-item{padding:18px 20px;flex:1}
+  .nav-links{display:none}
+}
+@media(max-width:600px){
+  .achievements-grid,.contrib-grid,.contact-links{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <div class="nav-dot"></div>
+    VD.portfolio
+  </div>
+  <div class="nav-right">
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#achievements">Impact</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <div class="theme-toggle" id="themeToggle" title="Toggle light/dark">
+      <div class="toggle-thumb"><span id="themeIcon">🌙</span></div>
+    </div>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+  <div class="hero-bg-grad"></div>
+  <div class="hero-grid"></div>
+  <div class="hero-content">
+    <div class="hero-badge">
+      <div class="badge-dot"></div>
+      Available for Senior SDET &amp; AI Automation Architect Roles
+    </div>
+    <h1 class="hero-name">Venkateshwara<br>Doijode</h1>
+    <div class="hero-typed-wrap">
+      <span class="typed-prefix">&gt;_</span>
+      <span class="typing"></span>
+    </div>
+    <p class="hero-desc">
+      9 years building scalable automation frameworks and AI-augmented quality platforms for enterprise fintech, banking &amp; SaaS. Based in , India.
+    </p>
+    <div class="hero-cta">
+      <a href="https://linkedin.com/in/venkateshwara-doijode" target="_blank" class="btn btn-primary">
+        <span>in</span> LinkedIn
+      </a>
+      <a href="https://github.com/VenkateshDoijode" target="_blank" class="btn btn-glass">
+         <span><i class="fa-brands fa-github"></i></span> GitHub
+      </a>
+      <a href="Venkateshwara_D_AI_Test_Engineer.pdf" download class="btn btn-dl">
+        <span>📄</span> Download Resume
+      </a>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-item"><div class="stat-num">9</div><div class="stat-label">Years Experience</div></div>
+      <div class="stat-item"><div class="stat-num">70%</div><div class="stat-label">Regression Savings</div></div>
+      <div class="stat-item"><div class="stat-num">60%</div><div class="stat-label">Faster Releases</div></div>
+      <div class="stat-item"><div class="stat-num">4x</div><div class="stat-label">Engineers Mentored</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">// about</div>
+  <h2 class="section-title">Crafting quality at <em>enterprise scale</em></h2>
+  <div class="about-grid reveal">
+    <div class="about-text">
+      <p>I'm a Senior SDET and Automation Architect with nearly a decade of hands-on experience building quality platforms that don't just test software — they accelerate it. My work lives at the intersection of intelligent automation, AI-augmented testing, and DevOps engineering.</p>
+      <p>At Wipro/BNY, I led the redesign of an entire regression ecosystem — compressing a 4-hour test suite to under 45 minutes, integrating AI-assisted self-healing logic, and building the Eliza AI Agent to eliminate data lookup bottlenecks across QA teams.</p>
+      <p>I believe quality engineering is an architectural discipline. The best test suites are designed with the same rigour as the systems they protect — modular, observable, and built to evolve alongside the product.</p>
+    </div>
+    <div class="about-sidebar">
+      <div class="info-card">
+        <div class="info-card-label">Education</div>
+        <div class="info-card-value">Bachelor of Engineering<br> Computer Science &amp; Engineering<br>Anna University</div>
+      </div>
+      <div class="info-card">
+        <div class="info-card-label">Certifications</div>
+        <div class="cert-list">
+          <div class="cert-item">Azure Kubernetes Service (AKS)</div>
+          <div class="cert-item">Selenium with Java — Automation Testing</div>
+          <div class="cert-item">Generative AI Essentials — AWS</div>
+          <div class="cert-item">NoSQL / CouchDB</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">// technical skills</div>
+  <h2 class="section-title">Tools I build <em>quality</em> with</h2>
+  <div class="skills-grid">
+    <div class="skill-card reveal"><div class="skill-head"><div class="skill-icon">☕</div><div class="skill-name">Languages</div></div><div class="skill-tags"><span class="tag">Java (Primary)</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">Shell/Bash</span></div></div>
+    <div class="skill-card reveal"><div class="skill-head"><div class="skill-icon">🌐</div><div class="skill-name">UI Automation</div></div><div class="skill-tags"><span class="tag">Selenium WebDriver</span><span class="tag">Selenium Grid</span><span class="tag">Appium Android</span><span class="tag">Appium iOS</span><span class="tag">Playwright</span></div></div>
+    <div class="skill-card reveal"><div class="skill-head"><div class="skill-icon">⚡</div><div class="skill-name">API &amp; Backend</div></div><div class="skill-tags"><span class="tag">REST Assured</span><span class="tag">Postman</span><span class="tag">JSON/XML</span><span class="tag">Contract Testing</span><span class="tag">Microservices</span></div></div>
+    <div class="skill-card reveal"><div class="skill-head"><div class="skill-icon">🤖</div><div class="skill-name">AI / Agents</div></div><div class="skill-tags"><span class="tag">AI Test Generation</span><span class="tag">Predictive Selection</span><span class="tag">Self-Healing</span><span class="tag">Eliza AI Agent</span><span class="tag">MCP Servers</span><span class="tag">GPT Optimization</span></div></div>
+    <div class="skill-card reveal"><div class="skill-head"><div class="skill-icon">🔩</div><div class="skill-name">CI/CD &amp; DevOps</div></div><div class="skill-tags"><span class="tag">Jenkins</span><span class="tag">GitHub Actions</span><span class="tag">Docker</span><span class="tag">Kubernetes (AKS)</span><span class="tag">Azure DevOps</span><span class="tag">Git</span></div></div>
+    <div class="skill-card reveal"><div class="skill-head"><div class="skill-icon">📐</div><div class="skill-name">Frameworks</div></div><div class="skill-tags"><span class="tag">TestNG</span><span class="tag">JUnit</span><span class="tag">Cucumber BDD</span><span class="tag">Pytest</span><span class="tag">Page Object Model</span><span class="tag">Data-Driven</span></div></div>
+    <div class="skill-card reveal"><div class="skill-head"><div class="skill-icon">📊</div><div class="skill-name">Performance</div></div><div class="skill-tags"><span class="tag">JMeter</span><span class="tag">Gatling</span><span class="tag">k6</span></div></div>
+    <div class="skill-card reveal"><div class="skill-head"><div class="skill-icon">🗄️</div><div class="skill-name">Databases</div></div><div class="skill-tags"><span class="tag">Oracle SQL</span><span class="tag">PostgreSQL</span><span class="tag">PL/SQL</span><span class="tag">CouchDB (NoSQL)</span></div></div>
+    <div class="skill-card reveal"><div class="skill-head"><div class="skill-icon">☁️</div><div class="skill-name">Cloud</div></div><div class="skill-tags"><span class="tag">Azure (AKS Certified)</span><span class="tag">AWS Gen AI Essentials</span></div></div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">// experience</div>
+  <h2 class="section-title">9 years of <em>impact at scale</em></h2>
+  <div class="experience-list">
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">JUN 2021 — PRESENT</div>
+        <div class="exp-company">Wipro</div>
+        <div class="exp-client">Bank of New York (BNY)</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-role">Lead SDET — Automation Architect</div>
+        <ul class="exp-bullets">
+          <li>Owned <strong>end-to-end quality strategy</strong> across 3 product areas — test plans, risk assessments, and coverage targets across functional, integration, regression, and smoke layers.</li>
+          <li>Architected a scalable <strong>Java + Selenium WebDriver + TestNG</strong> framework adopted across multiple product teams, eliminating 70% of manual regression effort.</li>
+          <li>Engineered comprehensive <strong>REST Assured API automation</strong> validating 40+ endpoints including auth flows, token management, and complex nested JSON schemas.</li>
+          <li>Designed <strong>Jenkins CI/CD quality gates</strong> triggering full automation suites on every commit, reducing release verification time by 60%.</li>
+          <li>Compressed regression suite runtime from <strong>4 hours to 45 minutes</strong> via TestNG parallel execution and selective regression strategies.</li>
+          <li>Built the <strong>Eliza AI Agent</strong> for rapid transactional data access, eliminating manual lookup bottlenecks for QA and dev teams.</li>
+          <li><strong>Mentored 4 junior QA engineers</strong> in framework design, API testing, and CI/CD — growing team automation coverage by 35% in 6 months.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">MAY 2018 — MAY 2021</div>
+        <div class="exp-company">Cognizant</div>
+        <div class="exp-client">Blue Cross NC</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-role">Programming Analyst</div>
+        <ul class="exp-bullets">
+          <li>Designed automation frameworks for <strong>microservices architectures</strong> — contract testing, service interaction validation, and distributed data flow verification.</li>
+          <li>Built and owned <strong>CI/CD quality pipelines</strong> (Jenkins + Git) embedding automated UI, API, and integration gates at every build and release stage.</li>
+          <li>Introduced <strong>AI-assisted test generation</strong>, improving functional coverage while reducing manual test design effort by 25%.</li>
+          <li><strong>Containerised test environments</strong> with Docker for consistent, reproducible automation across dev, staging, and pre-production environments.</li>
+          <li>Applied <strong>shift-left testing</strong> practices embedded in design and sprint planning — reducing UAT defect leakage by 30%.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="exp-item reveal">
+      <div class="exp-meta">
+        <div class="exp-period">MAR 2017 — MAY 2018</div>
+        <div class="exp-company">ReDIM Group</div>
+        <div class="exp-client">Chennai, India</div>
+      </div>
+      <div class="exp-body">
+        <div class="exp-role">Associate Software QA Engineer</div>
+        <ul class="exp-bullets">
+          <li>Built <strong>Selenium WebDriver (Java + TestNG)</strong> scripts for web apps and Appium scripts for native Android and iOS mobile apps.</li>
+          <li>Performed <strong>REST API testing with REST Assured</strong> and integrated automation suites into Jenkins CI/CD pipelines.</li>
+          <li>Authored Test Plans, Test Strategies, and traceability matrices; managed defect lifecycle in <strong>JIRA and HP ALM</strong>.</li>
+        </ul>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ACHIEVEMENTS -->
+<section id="achievements">
+  <div class="section-label">// key achievements</div>
+  <h2 class="section-title">Numbers that <em>tell the story</em></h2>
+  <div class="achievements-grid">
+    <div class="ach-card reveal"><div class="ach-num">70%</div><div class="ach-text">Reduction in manual regression effort through scalable automation framework design at Wipro / BNY.</div></div>
+    <div class="ach-card reveal"><div class="ach-num">45min</div><div class="ach-text">End-to-end regression runtime, compressed from 4 hours via TestNG parallel execution and test prioritisation.</div></div>
+    <div class="ach-card reveal"><div class="ach-num">60%</div><div class="ach-text">Faster release verification cycles by integrating full test suites into Jenkins CI/CD quality gates.</div></div>
+    <div class="ach-card reveal"><div class="ach-num">40%</div><div class="ach-text">Fewer flaky tests through smart locator engineering, retry logic, and systematic pipeline stabilisation.</div></div>
+    <div class="ach-card reveal"><div class="ach-num">35%</div><div class="ach-text">Growth in team-wide automation coverage after mentoring 4 junior QA engineers over 6 months.</div></div>
+    <div class="ach-card reveal"><div class="ach-num">30%</div><div class="ach-text">Reduction in UAT defect leakage through shift-left testing and early defect detection practices.</div></div>
+  </div>
+</section>
+
+<!-- CONTRIBUTIONS -->
+<section id="contributions">
+  <div class="section-label">// notable contributions</div>
+  <h2 class="section-title">Beyond the <em>day-to-day</em></h2>
+  <div class="contrib-grid">
+    <div class="contrib-card reveal"><div class="contrib-icon-wrap">🤖</div><div class="contrib-title">Eliza AI Agent</div><div class="contrib-desc">Developed an AI agent to provide quick access to transactional and hydration data, significantly reducing manual lookup time and improving analysis efficiency.</div></div>
+    <div class="contrib-card reveal"><div class="contrib-icon-wrap">⚡</div><div class="contrib-title">In-Sprint Automation</div><div class="contrib-desc">Implemented in-sprint automation strategy that received direct client appreciation for accelerating release cycles and enabling on-time delivery.</div></div>
+    <div class="contrib-card reveal"><div class="contrib-icon-wrap">📁</div><div class="contrib-title">DAT File Generation Utility</div><div class="contrib-desc">Built automation eliminating hours of manual effort. Submitted to Wipro Pragati for formal innovation recognition.</div></div>
+    <div class="contrib-card reveal"><div class="contrib-icon-wrap">🐚</div><div class="contrib-title">Shell Script Automation Suite</div><div class="contrib-desc">Created Shell scripts to automate recurring operational tasks, reducing manual intervention across deployment workflows.</div></div>
+    <div class="contrib-card reveal"><div class="contrib-icon-wrap">✨</div><div class="contrib-title">AI-Assisted Refactoring</div><div class="contrib-desc">Applied Windsurf AI to refactor Selenium and Python scripts — improving readability, long-term stability, and reusability.</div></div>
+    <div class="contrib-card reveal"><div class="contrib-icon-wrap">🐍</div><div class="contrib-title">Python Testing Utilities</div><div class="contrib-desc">Developed Python utilities for data parsing, report generation, and API validation — reducing regression effort by 30–50%.</div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner">
+    <div class="section-label">// contact</div>
+    <h2 class="section-title">Let's build <em>quality</em> together</h2>
+    <p class="contact-desc">Open to Senior SDET, Automation Architect, and QA Lead roles. I bring a proven track record, battle-tested frameworks, and a mentoring mindset.</p>
+    <div class="contact-links reveal">
+      <a class="contact-link" href="mailto:venkateshdoijode1@gmail.com">
+        <span class="c-icon">&#128229;</span>
+        <div><div class="c-val">venkateshdoijode1@gmail.com</div><div class="c-label">Email</div></div>
+      </a>
+      <a class="contact-link" href="tel:+919094117324">
+        <span class="c-icon">&#128241;</span>
+        <div><div class="c-val">+91 909 411 7324</div><div class="c-label">Phone</div></div>
+      </a>
+      <a class="contact-link" href="https://linkedin.com/in/venkateshwara-doijode" target="_blank">
+        <span class="c-icon"><i class="fa-brands fa-linkedin"></i></span> 
+        <div><div class="c-val">venkateshwara-doijode</div><div class="c-label">LinkedIn</div></div>
+      </a>
+      <a class="contact-link" href="https://github.com/VenkateshDoijode" target="_blank">
+          <span class="c-icon"><i class="fa-brands fa-github"></i></span>
+        <div><div class="c-val">VenkateshDoijode</div><div class="c-label">GitHub</div></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2026 Venkateshwara Doijode — Hosted on GitHub Pages</div>
+  <a href="Venkateshwara_D_AI_Test_Engineer.pdf" download class="btn btn-dl" style="padding:9px 20px;font-size:12px">
+    ↓ Resume PDF
+  </a>
+</footer>
+
+<!-- TYPED.JS -->
+<script>
+ var typed = new Typed('.typing', {
+  strings: ["SDET", "Fast Learner", "AI-Augmented Quality", "Automation Architect"],
+  loop: true,
+  typeSpeed: 40,   // Decreased from 80 (Faster typing)
+  backSpeed: 20,   // Decreased from 40 (Faster erasing)
+  backDelay: 1000,  // Decreased from 1800 (Shorter pause at the end)
+  startDelay: 200,  // Decreased from 400 (Faster initial start)
+});
+</script>
+
+<!-- THEME TOGGLE -->
+<script>
+(function() {
+  const toggle = document.getElementById('themeToggle');
+  const icon = document.getElementById('themeIcon');
+  const html = document.documentElement;
+  function setTheme(t) {
+    html.setAttribute('data-theme', t);
+    icon.textContent = t === 'dark' ? '🌙' : '☀️';
+    try { localStorage.setItem('portfolio-theme', t); } catch(e){}
+  }
+  var saved = 'dark';
+  try { saved = localStorage.getItem('portfolio-theme') || 'dark'; } catch(e){}
+  setTheme(saved);
+  toggle.addEventListener('click', function() {
+    setTheme(html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
+  });
+})();
+</script>
+
+<!-- PARTICLE MESH BG -->
+<script>
+(function() {
+  var canvas = document.getElementById('bg-canvas');
+  var ctx = canvas.getContext('2d');
+  var W, H, pts = [];
+  var N = 65, DIST = 155;
+
+  function resize() { W = canvas.width = innerWidth; H = canvas.height = innerHeight; }
+
+  function mkPt() {
+    return { x: Math.random()*W, y: Math.random()*H,
+             vx: (Math.random()-0.5)*0.32, vy: (Math.random()-0.5)*0.32 };
+  }
+
+  function init() { resize(); pts = []; for(var i=0;i<N;i++) pts.push(mkPt()); }
+
+  function color() {
+    return document.documentElement.getAttribute('data-theme') === 'dark'
+      ? '99,120,255' : '66,85,232';
+  }
+
+  function draw() {
+    ctx.clearRect(0,0,W,H);
+    var c = color();
+    for(var i=0;i<N;i++) {
+      for(var j=i+1;j<N;j++) {
+        var dx=pts[i].x-pts[j].x, dy=pts[i].y-pts[j].y;
+        var d=Math.sqrt(dx*dx+dy*dy);
+        if(d<DIST) {
+          ctx.beginPath();
+          ctx.moveTo(pts[i].x,pts[i].y);
+          ctx.lineTo(pts[j].x,pts[j].y);
+          ctx.strokeStyle='rgba('+c+','+(1-d/DIST)*0.28+')';
+          ctx.lineWidth=0.65; ctx.stroke();
+        }
+      }
+    }
+    for(var i=0;i<N;i++) {
+      var p=pts[i];
+      ctx.beginPath(); ctx.arc(p.x,p.y,1.3,0,Math.PI*2);
+      ctx.fillStyle='rgba('+c+',0.5)'; ctx.fill();
+      p.x+=p.vx; p.y+=p.vy;
+      if(p.x<0)p.x=W; if(p.x>W)p.x=0;
+      if(p.y<0)p.y=H; if(p.y>H)p.y=0;
+    }
+    requestAnimationFrame(draw);
+  }
+
+  window.addEventListener('resize', resize);
+  init(); draw();
+})();
+</script>
+
+<!-- SCROLL REVEAL -->
+<script>
+(function() {
+  var els = document.querySelectorAll('.reveal');
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e, i) {
+      if(e.isIntersecting) {
+        setTimeout(function(){ e.target.classList.add('visible'); }, i * 85);
+        obs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+  els.forEach(function(el){ obs.observe(el); });
+})();
+</script>
+
+</body>
+</html>

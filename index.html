@@ -326,6 +326,24 @@ section{padding:110px 6vw;border-top:1px solid var(--border);position:relative;z
 .contrib-title{font-size:15px;font-weight:700;margin-bottom:10px}
 .contrib-desc{font-size:13px;color:var(--text2);line-height:1.65}
 
+/* ─── PROJECTS ─── */
+.project-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.project-card{
+  background:var(--card-bg);border:1px solid var(--border);border-radius:16px;
+  padding:28px;box-shadow:var(--shadow-card);
+  display:flex;flex-direction:column;
+  transition:background var(--transition),border-color var(--transition),transform 0.25s;
+}
+.project-card:hover{transform:translateY(-5px);border-color:var(--accent)}
+.project-title{font-size:15px;font-weight:700;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.project-desc{font-size:13px;color:var(--text2);line-height:1.65;margin-bottom:18px;flex-grow:1}
+.project-tags{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:18px}
+.project-link{
+  font-family:'JetBrains Mono',monospace;font-size:12px;font-weight:600;
+  color:var(--accent2);display:inline-flex;align-items:center;gap:6px;
+}
+.project-link:hover{text-decoration:none;color:var(--accent)}
+
 /* ─── CONTACT ─── */
 #contact{text-align:center}
 .contact-inner{max-width:640px;margin:0 auto}
@@ -366,6 +384,7 @@ footer{
   .about-grid{grid-template-columns:1fr}
   .achievements-grid{grid-template-columns:repeat(2,1fr)}
   .contrib-grid{grid-template-columns:repeat(2,1fr)}
+  .project-grid{grid-template-columns:repeat(2,1fr)}
   .exp-item{grid-template-columns:1fr;gap:14px}
   .exp-item::before{display:none}
   .hero-stats{width:100%}
@@ -373,7 +392,7 @@ footer{
   .nav-links{display:none}
 }
 @media(max-width:600px){
-  .achievements-grid,.contrib-grid,.contact-links{grid-template-columns:1fr}
+  .achievements-grid,.contrib-grid,.project-grid,.contact-links{grid-template-columns:1fr}
 }
 </style>
 </head>
@@ -393,6 +412,7 @@ footer{
       <li><a href="#skills">Skills</a></li>
       <li><a href="#experience">Experience</a></li>
       <li><a href="#achievements">Impact</a></li>
+      <li><a href="#projects">Projects</a></li>
       <li><a href="#contact">Contact</a></li>
     </ul>
     <div class="theme-toggle" id="themeToggle" title="Toggle light/dark">
@@ -501,7 +521,7 @@ footer{
         <div class="exp-client">Bank of New York (BNY)</div>
       </div>
       <div class="exp-body">
-        <div class="exp-role">Lead SDET — Automation Architect</div>
+        <div class="exp-role">Lead SDET — Automation Architect & AI Test Engineer</div>
         <ul class="exp-bullets">
           <li>Owned <strong>end-to-end quality strategy</strong> across 3 product areas — test plans, risk assessments, and coverage targets across functional, integration, regression, and smoke layers.</li>
           <li>Architected a scalable <strong>Java + Selenium WebDriver + TestNG</strong> framework adopted across multiple product teams, eliminating 70% of manual regression effort.</li>
@@ -509,9 +529,16 @@ footer{
           <li>Designed <strong>Jenkins CI/CD quality gates</strong> triggering full automation suites on every commit, reducing release verification time by 60%.</li>
           <li>Compressed regression suite runtime from <strong>4 hours to 45 minutes</strong> via TestNG parallel execution and selective regression strategies.</li>
           <li>Built the <strong>Eliza AI Agent</strong> for rapid transactional data access, eliminating manual lookup bottlenecks for QA and dev teams.</li>
+          <li><strong>Mentored 4 junior QA engineers</strong> in framework design, API testing, and CI/CD — growing team automation coverage by 35% in 6 months.</li>
+        </ul>
+        <div class="exp-role" style="margin-top:26px">AI Test Engineer — Responsibilities</div>
+        <ul class="exp-bullets">
           <li>Developed automated <strong>AI/LLM testing frameworks</strong> using Python, PyTest, Promptfoo, and RAGAS to evaluate accuracy, relevance, hallucination, and response quality.</li>
           <li>Performed <strong>RAG, agent, robustness, bias, metamorphic, and drift testing</strong>, integrating AI quality gates and regression evaluations into CI/CD pipelines.</li>
-          <li><strong>Mentored 4 junior QA engineers</strong> in framework design, API testing, and CI/CD — growing team automation coverage by 35% in 6 months.</li>
+          <li>Designed test strategies for <strong>prompt engineering and agentic workflows</strong>, covering edge cases, adversarial inputs, and multi-turn conversation flows.</li>
+          <li>Built evaluation harnesses with <strong>DeepEval, Giskard, and Evidently AI</strong> to score LLM outputs against golden datasets and business rules before production release.</li>
+          <li>Defined <strong>AI quality gates</strong> — hallucination-rate thresholds, drift detection, and adversarial robustness checks — as automated CI/CD checkpoints ahead of every release.</li>
+          <li>Partnered with data science and ML engineering teams to validate model behaviour and translate evaluation results into actionable defect reports.</li>
         </ul>
       </div>
     </div>
@@ -578,6 +605,57 @@ footer{
     <div class="contrib-card reveal"><div class="contrib-icon-wrap">🐚</div><div class="contrib-title">Shell Script Automation Suite</div><div class="contrib-desc">Created Shell scripts to automate recurring operational tasks, reducing manual intervention across deployment workflows.</div></div>
     <div class="contrib-card reveal"><div class="contrib-icon-wrap">✨</div><div class="contrib-title">AI-Assisted Refactoring</div><div class="contrib-desc">Applied Windsurf AI to refactor Selenium and Python scripts — improving readability, long-term stability, and reusability.</div></div>
     <div class="contrib-card reveal"><div class="contrib-icon-wrap">🐍</div><div class="contrib-title">Python Testing Utilities</div><div class="contrib-desc">Developed Python utilities for data parsing, report generation, and API validation — reducing regression effort by 30–50%.</div></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="section-label">// open source & side projects</div>
+  <h2 class="section-title">Things I've <em>built</em></h2>
+  <div class="project-grid">
+
+    <div class="project-card reveal">
+      <div class="project-title">🧪 AITestCaseGen</div>
+      <div class="project-desc">Open-source Python toolkit automating Jira Zephyr Scale test case management, powered by a tiered AI engine (HuggingFace → Ollama → rule-based fallback).</div>
+      <div class="project-tags"><span class="tag">Python</span><span class="tag">Jira Zephyr</span><span class="tag">MCP</span><span class="tag">HuggingFace</span></div>
+      <a class="project-link" href="https://github.com/VenkateshDoijode/ai-testcase-generator-mcp" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-title">🛡️ LLM-Strata</div>
+      <div class="project-desc">A framework for LLM security and robustness testing — evaluation, guardrails, and observability workflows for AI systems.</div>
+      <div class="project-tags"><span class="tag">Python</span><span class="tag">LLM Security</span><span class="tag">DeepEval</span><span class="tag">Langfuse</span></div>
+      <a class="project-link" href="https://github.com/VenkateshDoijode/LLM-Strata" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-title">🧭 Microsoft WebWright</div>
+      <div class="project-desc">An autonomous browser-interaction AI agent (Google Flights example) using GPT-4o and Playwright to navigate and complete web tasks.</div>
+      <div class="project-tags"><span class="tag">GPT-4o</span><span class="tag">Playwright</span><span class="tag">AI Agent</span></div>
+      <a class="project-link" href="https://github.com/VenkateshDoijode/microsoft-webwright-example" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-title">⚙️ Promptfoo CI/CD Framework</div>
+      <div class="project-desc">Integrates Promptfoo-based prompt/LLM evaluation into CI/CD pipelines as automated quality gates.</div>
+      <div class="project-tags"><span class="tag">Promptfoo</span><span class="tag">CI/CD</span><span class="tag">LLM Eval</span></div>
+      <a class="project-link" href="https://github.com/VenkateshDoijode/promptfoo-cicd-framework" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-title">🔌 Custom MCP</div>
+      <div class="project-desc">A custom Model Context Protocol server built to close gaps in QA and automation workflows.</div>
+      <div class="project-tags"><span class="tag">MCP</span><span class="tag">Agentic Tooling</span></div>
+      <a class="project-link" href="https://github.com/VenkateshDoijode/custom-mcp" target="_blank">View on GitHub →</a>
+    </div>
+
+    <div class="project-card reveal">
+      <div class="project-title">🎯 AI Locator Agent</div>
+      <div class="project-desc">An AI-driven agent for resolving UI element locators in automation frameworks, reducing flaky or broken selectors.</div>
+      <div class="project-tags"><span class="tag">AI</span><span class="tag">Selenium/Playwright</span><span class="tag">Self-Healing</span></div>
+      <a class="project-link" href="https://github.com/VenkateshDoijode/ai-locator-agent" target="_blank">View on GitHub →</a>
+    </div>
+
   </div>
 </section>
 
